@@ -22,7 +22,8 @@ public class MainActivity extends AppCompatActivity {
     CalendarView cl;
     TextView t;
     TimePicker tm;
-
+    String date = "";
+    String time = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,20 +39,6 @@ public class MainActivity extends AppCompatActivity {
         cl = (CalendarView)findViewById(R.id.calendarView);
         rg = (RadioGroup)findViewById(R.id.radioGroup);
 
-        b1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                c.start();
-                c.setTextColor(Color.RED);
-            }
-        });
-        b2.setOnClickListener(new View.OnClickListener() {
-
-             public void onClick(View v) {
-                 c.stop();
-                 c.setTextColor(Color.BLUE);
-            }
-        });
 
         rg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -64,6 +51,33 @@ public class MainActivity extends AppCompatActivity {
                     cl.setVisibility(View.INVISIBLE);
                     tm.setVisibility(View.VISIBLE);
                 }
+            }
+        });
+
+        cl.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+            @Override
+            public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
+                date = year +"년"+ (month+1)+ "월" + dayOfMonth + "일";
+            }
+        });
+        tm.setOnTimeChangedListener(new TimePicker.OnTimeChangedListener(){
+            public void onTimeChanged(TimePicker view, int hourOfday,int minute){
+                time = hourOfday +"시" + minute +"분";
+            }
+        });
+        b1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                c.start();
+                c.setTextColor(Color.RED);
+            }
+        });
+
+        b2.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                c.stop();
+                c.setTextColor(Color.BLUE);
+                t.setText(date+time+"예약됨");
             }
         });
     }
