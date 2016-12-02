@@ -12,11 +12,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:format="time resrvation"
+        android:format="time resrvation : %s"
         android:id="@+id/chronometer" />
 
     <Button
-        android:text="Button"
+        android:text="start"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/button" />

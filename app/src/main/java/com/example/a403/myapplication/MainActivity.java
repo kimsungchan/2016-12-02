@@ -1,5 +1,6 @@
 package com.example.a403.myapplication;
 
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -41,8 +42,17 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 c.start();
+                c.setTextColor(Color.RED);
             }
         });
+        b2.setOnClickListener(new View.OnClickListener() {
+
+             public void onClick(View v) {
+                 c.stop();
+                 c.setTextColor(Color.BLUE);
+            }
+        });
+
         rg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
