@@ -12,6 +12,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -75,6 +76,10 @@ public class MainActivity extends AppCompatActivity {
 
         b2.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                if(time == null){
+                    Toast.makeText(getApplicationContext(),"시간을 선택해주세요",Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 c.stop();
                 c.setTextColor(Color.BLUE);
                 t.setText(date+time+"예약됨");
