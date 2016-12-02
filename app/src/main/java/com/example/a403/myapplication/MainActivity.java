@@ -1,6 +1,7 @@
 package com.example.a403.myapplication;
 
 import android.graphics.Color;
+import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -69,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                c.setBase(SystemClock.elapsedRealtime());
                 c.start();
                 c.setTextColor(Color.RED);
             }
@@ -80,6 +82,7 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(),"시간을 선택해주세요",Toast.LENGTH_SHORT).show();
                     return;
                 }
+                c.setBase(SystemClock.elapsedRealtime());
                 c.stop();
                 c.setTextColor(Color.BLUE);
                 t.setText(date+time+"예약됨");
