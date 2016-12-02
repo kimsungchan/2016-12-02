@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     TimePicker tm;
     String date = "";
     String time = "";
+    boolean check = true;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,14 +79,21 @@ public class MainActivity extends AppCompatActivity {
 
         b2.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                if(time == null){
+                if(check){
+                    c.setBase(SystemClock.elapsedRealtime());
+                    c.stop();
+                    c.setTextColor(Color.BLUE);
+                    t.setText(date + time + "예약됨");
+                }
+                else if(date==null)
+                {
+                    Toast.makeText(getApplicationContext(),"예약날짜를 선택해주세요",Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                else if(time==null){
                     Toast.makeText(getApplicationContext(),"시간을 선택해주세요",Toast.LENGTH_SHORT).show();
                     return;
                 }
-                c.setBase(SystemClock.elapsedRealtime());
-                c.stop();
-                c.setTextColor(Color.BLUE);
-                t.setText(date+time+"예약됨");
             }
         });
     }
